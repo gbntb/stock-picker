@@ -1,6 +1,6 @@
 def stock_picker(prices_array)
-  profits_by_index = prices_array.each_with_index.reduce(Hash.new()) do |buy_hash, (buy_price, buy_index)|
-    profits_hash = prices_array.each_with_index.reduce(Hash.new()) do |sell_hash, (sell_price, sell_index)|
+  profits_by_index = prices_array.each_with_index.inject(Hash.new()) do |buy_hash, (buy_price, buy_index)|
+    profits_hash = prices_array.each_with_index.inject(Hash.new()) do |sell_hash, (sell_price, sell_index)|
       sell_hash[sell_index] = sell_price - buy_price if sell_index >= buy_index
       sell_hash
     end
